@@ -23,7 +23,7 @@
   <artifactId>jbosgi-blueprint</artifactId>
   <packaging>bundle</packaging>
 
-  <version>1.0.3-SNAPSHOT</version>
+  <version>1.0.3</version>
 
   <!-- Parent -->
   <parent>
