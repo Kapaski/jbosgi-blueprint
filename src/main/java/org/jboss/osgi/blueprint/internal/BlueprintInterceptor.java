@@ -21,8 +21,6 @@
  */
 package org.jboss.osgi.blueprint.internal;
 
-//$Id$
-
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -47,7 +45,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * The Blueprint interceptor
- * 
+ *
  * @author thomas.diesler@jboss.com
  * @since 20-Oct-2009
  */
@@ -55,22 +53,22 @@ public class BlueprintInterceptor extends AbstractLifecycleInterceptor implement
 {
    // Provide logging
    private Logger log = LoggerFactory.getLogger(BlueprintInterceptor.class);
-   
+
    private Map<Bundle, BlueprintContainerImpl> containers;
    private BlueprintEventDispatcher eventDispatcher;
    private NamespaceHandlerRegistry handlers;
    private ScheduledExecutorService executors;
-   
+
    public void start(BundleContext context)
    {
       containers = new HashMap<Bundle, BlueprintContainerImpl>();
       handlers = new NamespaceHandlerRegistryImpl(context);
       executors = Executors.newScheduledThreadPool(3);
       eventDispatcher = new BlueprintEventDispatcher(context, executors);
-      
+
       context.registerService(LifecycleInterceptor.class.getName(), this, null);
    }
-   
+
    public void stop(BundleContext context)
    {
       for (Bundle bundle : containers.keySet())
@@ -85,7 +83,7 @@ public class BlueprintInterceptor extends AbstractLifecycleInterceptor implement
       Bundle bundle = context.getBundle();
       if (state == Bundle.STARTING)
       {
-         // If a Bundle-Blueprint manifest header is defined, then this header contains a list of paths. 
+         // If a Bundle-Blueprint manifest header is defined, then this header contains a list of paths.
          // If this header is not defined, then resources ending in .xml in the bundle’s
          // OSGI-INF/blueprint directory must be used. These are the resources that
          // would be found by calling the Bundle findEntries("OSGI-INF/blueprint", "*.xml", false) method.

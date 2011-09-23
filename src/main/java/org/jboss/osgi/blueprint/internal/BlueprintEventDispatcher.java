@@ -21,8 +21,6 @@
  */
 package org.jboss.osgi.blueprint.internal;
 
-//$Id$
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Dictionary;
@@ -39,6 +37,7 @@ import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.aries.blueprint.utils.JavaUtils;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
@@ -54,15 +53,13 @@ import org.osgi.util.tracker.ServiceTrackerCustomizer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.aries.blueprint.utils.JavaUtils;
-
 /**
  * The delivery of {@link BlueprintEvent}s is complicated.  The blueprint extender and its containers use this class to
  * deliver {@link BlueprintEvent}s.
  *
- * This is a copy of the Aries  BlueprintEventDispatcher which is package protexted 
- * 
- * @version $Rev$Date: 2010-01-06 07:05:04 +0100 (Wed, 06 Jan 2010) 
+ * This is a copy of the Aries  BlueprintEventDispatcher which is package protexted
+ *
+ * @version $Rev$Date: 2010-01-06 07:05:04 +0100 (Wed, 06 Jan 2010)
  */
 class BlueprintEventDispatcher implements BlueprintListener, SynchronousBundleListener {
 
